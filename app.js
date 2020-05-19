@@ -10,7 +10,7 @@ app.get('/api/books', async (req, res) => {
     // Grabbing the title query parameter from requests if it's provided
     // i.e. localhost:8080/api/books?title=joy+of+baking
     const { title } = req.query;
-    console.log(req.query)
+    console.log(req)
     if (!title) throw new Error('You must provide a title query parameter');
 
     // Making our request to Google Books
@@ -37,6 +37,9 @@ app.get('/api/books', async (req, res) => {
 });
 
 // Listening for requests on a specific port
-app.listen(8080, () => {
-  console.log('Server listening on port 8080');
-});
+//app.listen(8080, () => {
+ // console.log('Server listening on port 8080');
+//});
+
+const port = process.env.PORT || 8080; 
+app.listen(port, () => console.log('App is listening on port ${port}')); 
