@@ -36,6 +36,13 @@ app.get('/api/books', async (req, res) => {
   }
 });
 
+//static hosting 
+
+app.use(express.static(path.join(__dirname, 'build')));
+app.get('*', (req,res) => {
+  res.sendFile(path.join(__dirname, 'build/index.html')); 
+}); 
+
 // Listening for requests on a specific port
 //app.listen(8080, () => {
  // console.log('Server listening on port 8080');
